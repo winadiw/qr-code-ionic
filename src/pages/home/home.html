@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Bar/QR Code Scanner
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h1>
+    <button ion-button color="dark" full block (click)="scan()">Start Scan</button>
+  </h1>
+
+  <ion-card *ngIf="productFoundinDatabase">
+    <ion-card-header>
+      <h2>Price: $ {{selectedProduct.price}}</h2>
+    </ion-card-header>
+    <ion-card-content>
+      <ul>
+        <li>PLU: {{selectedProduct.plu}}</li>
+        <li>Name: {{selectedProduct.name}}</li>
+        <li>Description: {{selectedProduct.desc}}</li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="!barcodeResult">
+    <ion-card-header>
+      <h2>Press START SCAN to get code! </h2>
+    </ion-card-header>
+  </ion-card>
+
+<ion-card *ngIf="barcodeResult && !productFoundinDatabase">
+  <ion-card-header>
+      <h2>
+        Code:
+      </h2>
+  </ion-card-header>
+  <ion-card-content>
+      <p>
+         {{ barcodeResult }}
+         <button ion-button color="light" (click)="copyText()" style="float:right;">Copy Code</button>
+      </p>
+  </ion-card-content>
+</ion-card>
+
+<ion-grid *ngIf="barcodeResult && !productFoundinDatabase">
+  <ion-row>
+    <ion-col>
+          <ion-item no-lines>
+          <button ion-button full icon-left *ngIf="isCodeURL()" (click)="openURL('_system')">
+            <ion-icon name="browsers"></ion-icon>
+          Open Link with System Browser
+          </button>
+        </ion-item>
+      </ion-col>
+    <ion-col>
+      <ion-item no-lines>
+      <button ion-button full icon-left color="secondary" *ngIf="isCodeURL()" (click)="openURL('_blank')">
+        <ion-icon name="link"></ion-icon>
+      Open Link with App Browser
+      </button>
+    </ion-item>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>
