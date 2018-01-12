@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.ionic.scanner" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Scanner Bar/QR</name>
-    <description>Ionic 3 Barcode or QRCode Scanner</description>
+    <description>Ionic 3 Barcode/QRCode Scanner</description>
     <author email="winadiw@gmail.com" href="http://ionicframework.com/">Winadi Wiratama</author>
     <content src="index.html" />
     <access origin="*" />
